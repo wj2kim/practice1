@@ -8,6 +8,7 @@ public class Main {
 		
 		MemberJoinDAO mj =new MemberJoinDAO();
 		mj.run();
+
 		
 	}
 
