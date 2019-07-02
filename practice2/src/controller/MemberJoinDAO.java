@@ -58,9 +58,42 @@ public class MemberJoinDAO {
 			if(m.getId().equals(id)&&m.getPw().equals(pw)){
 				System.out.println("Welcome User "+ m.getId());
 			}
-			
-		}
+			else if (!(m.getId().equals(id))) {
+				System.out.println("Check your ID");
+			}
+			else {
+				System.out.println("Your Password is Incorrect");
+			}
+		}	
+	}
+	
+	public void register() {
+		sc.nextLine();
+		String id=getStrInput("ID: ");
+		String pw=getStrInput("Password: ");
+		String pw2=getStrInput("Confirm Password: ");
+		String name=getStrInput("Name: ");
+		String phone=getStrInput("Phone: ");
 		
+		if (idcheck(id)) {
+			System.out.println("Cannot Use this ID");
+		}
+		else if (pw.equals(pw2)) {
+			System.out.println("Thank you for the register!");
+			list.add(new Member(id,pw,name,phone));
+		}
+		else
+			System.out.println("Your Password is Incorrect");
+	}
+	
+	public boolean idcheck(String id) {
+		boolean check = true;
+		for (Member m: list) {
+			if (m.getId().contentEquals(id)) {
+				return check;
+			}
+		}
+		return false;
 	}
 	
 	public int getIntInput(String msg) {
