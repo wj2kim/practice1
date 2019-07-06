@@ -9,6 +9,11 @@ public class Test03 {
 		
 		for (int i=arr.length;i-->0;) {
 			System.out.println(arr[i]);
+			
 		}
+		
+//		for (int i=arr.length;i-->0;) {
+//			System.out.println(arr[i]);
+//		}
 	}
 }
