@@ -25,41 +25,71 @@ public class MemberJoinDAO {
 				login();
 				break;
 			case 2:
-//				register();
+				register();
 				break;
 			case 3:
 				displayMember();
 				break;
 			case 4:
-//				searchMember();
+				searchMember();
 				break;
 			}
 		}
+		System.out.println("see you next time!");
 	}
 	
 	public int menu() {
-		System.out.println("Welcome");
-		return getIntInput ("[1]Log In [2]Join [3]Search [0]Exit");
+		System.out.println("Welcome to fork");
+		return getIntInput ("[1]Log In [2]Join [3]Display all Users info [4]Search by ID [0]Exit");
 	}
 	
 	public void displayMember() {
+		if(list.isEmpty()) {
+			System.out.println("Please register for the first time!");
+			return;
+		}
+		
 		Iterator<Member> ite=list.iterator();
 		if(ite.hasNext()) {
 			System.out.println(ite.next());
 		}
 	}
 	
+	public void searchMember() {
+		sc.nextLine();
+		
+		if(list.isEmpty()) {
+			System.out.println("Please register for the first time!");
+			return;
+		}
+		
+		String id=getStrInput("Search by ID: ");
+		for (Member m: list) {
+			if(m.getId().equals(id)) {
+				System.out.println(m);
+			}
+		}
+	
+	}
+	
 	public void login() {
 		sc.nextLine();
+		
+		if(list.isEmpty()) {
+			System.out.println("Please register for the first time!");
+			return;
+		}
+		
 		String id=getStrInput("ID: ");
 		String pw=getStrInput("pw: ");
+		
 		
 		for (Member m : list) {
 			if(m.getId().equals(id)&&m.getPw().equals(pw)){
 				System.out.println("Welcome User "+ m.getId());
 			}
 			else if (!(m.getId().equals(id))) {
-				System.out.println("Check your ID");
+				System.out.println("Your ID is incorrect or you are not registered");
 			}
 			else {
 				System.out.println("Your Password is Incorrect");
