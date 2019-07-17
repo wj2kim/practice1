@@ -35,6 +35,7 @@ public class MainView {
 					break;
 					}
 				}
+				break;
 			case 3:
 				controller.insertEmployee();
 				break;
@@ -109,5 +110,18 @@ public class MainView {
 	      System.out.print("매니저아이디 입력: ");
 	      e.setManagerId(sc.nextInt());
 	      return e;
+	}
+	
+	public Employee updateData() {
+		Employee e=new Employee();
+		System.out.println("==== 수정할 사원 아이디 ====");
+		System.out.println("입력: ");
+		e.setEmpId(sc.nextLine());
+		System.out.println("==== 사원 수정 ====");
+		System.out.println("이메일: ");
+		e.setEmail(sc.nextLine());
+		System.out.println("전화번호: ");
+		e.setPhone(sc.nextLine());
+		return e;
 	}
 }

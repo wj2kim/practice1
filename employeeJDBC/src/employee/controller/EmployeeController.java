@@ -64,4 +64,10 @@ public class EmployeeController {
 		String msg=service.insertEmployeeData(e);
 		new MainView().printMsg(msg);
 	}
+	
+	public void updateEmployee() {
+		Employee e=new MainView().updateData();
+		String msg=service.updateEmployee(e);
+		new MainView().printMsg(msg);
+	}
 }

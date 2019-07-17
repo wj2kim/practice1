@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Common.JDBCTemplate;
+import static Common.JDBCTemplate.*;
 import employee.dto.Employee;
 
 public class EmployeeDao {
@@ -42,23 +42,23 @@ public class EmployeeDao {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(pstmt);
+			close(rs);
+			close(pstmt);
 		}
 		return list;
 	}
 	
-	public List<Employee> displaySingleInfo(Connection conn, String id, String name, String deptCode, int salary){
+	public List<Employee> displaySingleInfo(Connection conn,Employee em){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Employee>list=new ArrayList();
 		
-		if((id!=null)&&name==null) {
+		if((em.getEmpId()!=null)&&em.getEmpName()==null) {
 		String sql="select * from employee where emp_id=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, em.getEmpId());
 			rs=pstmt.executeQuery();
 		
 			while(rs.next()) {
@@ -82,16 +82,15 @@ public class EmployeeDao {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			JDBCTemplate.close(rs);
-			JDBCTemplate.close(pstmt);
+			close(rs);
 		}
 	}
 		
-		else if((name!=null)&&id==null) {
+		else if((em.getEmpName()!=null)&&em.getEmpId()==null) {
 			String sql="select * from employee where emp_name like ?";
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, "%"+name+"%");
+				pstmt.setString(1, "%"+em.getEmpName()+"%");
 				rs=pstmt.executeQuery();
 			
 				while(rs.next()) {
@@ -115,16 +114,15 @@ public class EmployeeDao {
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(pstmt);
+				close(rs);
 			}
 		}
 		
-		else if (name==null&&(deptCode!=null)) {
+		else if (em.getEmpName()==null&&(em.getDeptCode()!=null)) {
 			String sql="select * from employee where dept_code=?";
 			try {
 				pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, deptCode);
+				pstmt.setString(1, em.getDeptCode());
 				rs=pstmt.executeQuery();
 			
 				while(rs.next()) {
@@ -148,13 +146,12 @@ public class EmployeeDao {
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(pstmt);
+				close(rs);
 			}
 		}
 		
-		else if (name==null&&deptCode==null&&salary>0) {
-			salary=salary/12;
+		else if (em.getEmpId()==null&&em.getDeptCode()==null&&em.getSalary()>0) {
+			int salary=em.getSalary()/12;
 			String sql="select * from employee where salary>?";
 			try {
 				pstmt=conn.prepareStatement(sql);
@@ -182,8 +179,7 @@ public class EmployeeDao {
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}finally {
-				JDBCTemplate.close(rs);
-				JDBCTemplate.close(pstmt);
+				close(rs);
 			}
 		}
 		return list;
@@ -210,7 +206,22 @@ public class EmployeeDao {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}finally {
-			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	
+	public int updateEmployee(Connection conn, Employee e) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql="update employee set email=?, phone=? where emp_id='"+e.getEmpId()+"'";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, e.getEmail());
+			pstmt.setString(2, e.getPhone());
+			result=pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}finally {
 		}
 		return result;
 	}
