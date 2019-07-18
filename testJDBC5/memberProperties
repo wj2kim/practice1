@@ -1,0 +1,6 @@
+selectAll=select*  from member
+selectById=select * from member where member_id=?
+selectByName=select * from member where member_name like ?
+insertMember=insert into member values(?,?,?,?,?,?,?,?,?,sysdate)
+updateMember=update member set pwd=?, email=?,phone=?,hobby=? where member_id=?
+deleteMember=delete from member where member_id=?

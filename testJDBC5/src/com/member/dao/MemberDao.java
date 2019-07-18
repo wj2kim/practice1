@@ -1,23 +1,35 @@
 package com.member.dao;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import com.member.vo.Member;
 
 import common.JDBCTemplate;
 
 public class MemberDao {
+	private Properties prop=new Properties();
+	
+	public MemberDao() {
+		try {
+			prop.load(new FileReader("memberProperties"));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}	
+	} // properties이용 쿼리문 가지고 오기
 
 	public List<Member> selectAll(Connection conn){
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List<Member>list=new ArrayList();
-		String sql="select * from member";
+		String sql=prop.getProperty("selectAll");
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -48,7 +60,7 @@ public class MemberDao {
 		List<Member>list=new ArrayList<Member>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from member where member_id= ?";
+		String sql=prop.getProperty("selectById");
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -81,7 +93,7 @@ public class MemberDao {
 		List<Member>list=new ArrayList<Member>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from member where member_name like ?";
+		String sql=prop.getProperty("selectByName");
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+name+"%");
@@ -113,7 +125,7 @@ public class MemberDao {
 	public int insertMember(Connection conn, Member m) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String sql="insert into member values(?,?,?,?,?,?,?,?,?,sysdate)";
+		String sql=prop.getProperty("insertMenu");
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -138,7 +150,7 @@ public class MemberDao {
 	public int updateMember(Connection conn, Member m, String id) {
 		PreparedStatement pstmt=null;
 		int result=0;
-		String sql="update member set member_pwd=?,email=?,phone=?, hobby=? where member_id='"+id+"'";
+		String sql=prop.getProperty("updateMember");
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -146,6 +158,7 @@ public class MemberDao {
 			pstmt.setString(2, m.getEmail());
 			pstmt.setString(3, m.getPhone());
 			pstmt.setString(4, m.getHobby());
+			pstmt.setString(5, id);
 			result=pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
