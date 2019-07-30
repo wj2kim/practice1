@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>김우정님의 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
+    <style>
+        #header{
+            background: #f0f0f0;
+            text-align: center;
+            padding:0.5em;
+        }
+        .coloreff{
+            color: cornflowerblue;
+        }
+        .button1{
+            text-decoration: none;
+          color: cornflowerblue;
+        }
+        #head1, footer{
+            padding: 1em;
+            font-size: 100%;
+            display: block;
+        }
+        body {
+            line-height: 1;
+            background: #f5f5f5;
+        }
+        section{
+            margin-left: 10%;
+        }
+        body, textarea {
+            color: #777;
+            font-family: "Source Sans Pro","Sunflower", sans-serif;
+            font-size: 16pt;
+            font-weight: 300;
+            line-height: 1.65em;
+        }
+        h2 {
+		    line-height: 1.5em;
+        }
+        .form {
+            margin: 0 0 2em 0;
+        }      
+        .box {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 0 0 #e5e5e5;
+            margin: 0 0 2em 0;
+            padding: 2em;
+            width:70%;
+            
+        }
+
+        #id, #password,#email{
+            padding: 1em;
+            letter-spacing:2px;
+            margin-bottom: 1em;
+            width: 30em;
+            border-radius: 10px;
+            box-shadow: 0 2px 0 0 #e5e5e5;
+        }
+        #submit{
+            width:10em;
+            height: 1.6em;
+            border-radius: 10px;
+            box-shadow: 0 2px 0 0 #e5e5e5;
+            font-family:"Source Sans Pro","Sunflower", sans-serif;
+            color: #777;
+        }
+        .label {
+		    color: #646464;
+		    display: block;
+		    font-size: 0.9em;
+		    font-weight: 300;
+		    margin: 0 0 1em 0;
+        }
+	    ul.icons li {
+		    display: inline-block;
+			padding: 0 1.25em 0 0;
+        }
+        #footer {
+		    background: #f0f0f0;
+		    text-align: center;
+        }
+        input[type="text"],
+	    input[type="password"],
+        input[type="submit"],
+        input[type="email"],
+	    select,textarea {
+            background-color: #f8f8f8;
+            border-radius: 6px;
+            border: solid 1px #e5e5e5;
+            color: inherit;
+            display: block;
+            outline: 0;
+            padding: 0 1em;
+            text-decoration: none;
+            width: 100%;
+    	}   
+        input[type="text"]:focus,
+		input[type="password"]:focus,
+        input[type="submit"]:focus,
+        input[type="email"]:focus,
+		select:focus,
+		textarea:focus {
+			border-color: goldenrod;
+            box-shadow: 0 0 0 4px goldenrod;
+        }
+        .coloreffect{
+            color:#646464;
+        }
+    </style>
+</head>
+<body class="mypage">
+    <div id="myownpage">
+        <!-- head -->
+        <header id="header">
+                <h1><span class="coloreffect">김우정</span>님의 페이지</h1>
+                <p>Reborn with Java</p>
+                <a href="https://www.youtube.com/watch?v=1KMDdOkX1io" class="button1">포트폴리오 보러가기</a>
+        
+        </header>
+        <!-- main -->
+        <section id="section">
+            <header id="head1">
+				<h2>노력은 <span class="coloreff">모두</span>에게 공평하다</h2>
+				<p>There is no traffic in your <span class="coloreff">own</span> lane</p>
+            </header>
+            <div class="box">
+                    <p>이메일을 입력하고 '<span class="coloreffect">김우정</span>'님의 <span class="coloreff">소식</span>을 지금 받아보세요!</p>
+                    <form id="form"> 
+                        <div>
+                            <input type="email" name="email" id="email" value="" placeholder="e-mail" />
+                        </div>
+                        <div>
+                            <input type="submit" id="submit"value="회원가입">
+                        </div>
+                    </form>
+                </div>
+            <div class="box">
+                <p>로그인</p>
+                <form id="form"> 
+                    <div>
+                        <input type="text" name="id" id="id" value="" placeholder="ID" />
+                    </div>
+                    <div>
+                        <input type="password" name="password" id="password" value="" placeholder="Password" />
+                    </div>
+                    <div>
+                        <input type="submit" id="submit"value="Log in">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- footer -->
+        <footer id="footer">
+                <p><span class="coloreffect">김우정</span>님의 <span class="coloreff">SNS</span>페이지 바로가기</p>
+				<ul class="icons">
+					<li><a href="https://www.facebook.com/LeonardoDiCaprio/" class="facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/dlwlrma/?hl=ko" class="instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://github.com/wj2kim" class="github"><span class="label">Github</span></a></li>
+				</ul>
+        </footer>
+    </div>
+</body>
+</html>
