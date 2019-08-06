@@ -7,8 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>근무지 추가</title>
     <style>
-        div>pre {
+        form>div>pre {
             border: 1px solid red;
+        }
+        #detail{
+            border: 1px solid blue;
+            width: 700px; height:400px;
+        }
+        #map{
+            border: 1px solid green;
+            width: 500px; height:200px;
+            text-align: center;
+            margin-left: 100px;
+        }
+        #join{
+            margin-left: 300px;
         }
     </style>
 </head>
@@ -23,21 +36,30 @@
             <div>
                 <Pre>
                     사업장 이름
-                    점주명: 홍길동
-                    주소 
-                    사업장 전화번호
+                    점주명: 홍길동  
+                    <button>자세히 보기</button>
                 </Pre>
             </div>
             <div>
                 <Pre>
                     사업장 이름
                     점주명: 둘리
-                    주소 
-                    사업장 전화번호
+                    <button>자세히 보기</button>
                 </Pre>
             </div>
         </form>
-        <button>근무지 합류하기</button>
+    </div>
+    <div id="detail">
+        <pre>
+        사업장 이름 
+        점주명: 홍길동 
+        주소
+        사업장 전화번호 
+        </pre>
+        <div id="map">
+            지도/위치
+        </div>
+        <button id="join">근무지 합류하기</button>
     </div>
 </body>
 
