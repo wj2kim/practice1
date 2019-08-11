@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LoginPage</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        .needs-validation {
+            border: 1px solid red;
+            margin: 40px 80px;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="needs-validation" novalidate>
+        <div class="form-row" style="border: 1px solid blue">
+            <div class="col-md-7 mb-3" style="border: 1px solid green">
+                <label for="validationCustomEmail">이메일</label>
+                <input type="email" class="form-control" id="validationCustomEmail" aria-describedby="emailHelp" placeholder="이메일">
+                <small id="emailHelp" class="form-text text-muted" style="margin-left: 5px">아이디처럼 사용하는 이메일 입니다. 신중하게 입력해 주세요.</small>
+                    <div class="invalid-feedback" style="margin-left: 5px">
+                        이메일 형식에 맞춰서 입력해 주세요.
+                    </div>
+            </div>
+        </div>
+        <div class="form-row" style="border: 1px solid blue">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">이름</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="이름" value=""
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+        <div class="form-row" style="border: 1px solid coral">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">비밀번호</label>
+                    <input type="password" class="form-control" id="validationCustom02" placeholder="비밀번호" value=""
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom03">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="validationCustom03" placeholder="비밀번호 확인" value=""
+                        required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <!-- <div class="col-md-3 mb-3" style="border: 1px solid black">
+                    <span class="badge badge-success">일치</span>
+                    <span class="badge badge-warning">불일치</span>
+                </div> -->
+            </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    이용약관을 확인하였습니다.
+                </label>
+                <div class="invalid-feedback">
+                    이용약관을 확인해주세요.
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">이메일 인증하기</button>
+    </form>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+
+</html>
